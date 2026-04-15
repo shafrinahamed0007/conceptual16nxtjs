@@ -16,7 +16,7 @@ const appsPromise = async function () {
   return data;
 };
 
-const TrendingApps = async () => {
+const TrendingApps = async ({ from }) => {
   //   const apps = use(appsPromise);
   //   console.log("Apps", apps);
   //   const data = useLoaderData();
@@ -47,9 +47,9 @@ const TrendingApps = async () => {
 
   return (
     <div>
-      <div>
+      <div className="text-center my-10">
         {/* Section header */}
-        Total Apps: {apps.length}
+        <h2 className="font-bold text-4xl">{from ==="homepage"?  "Trending Apps" : "All Apps"}</h2>
         {/* {loading ? (
           <div className="flex justify-center items-center">
             {" "}
@@ -57,7 +57,7 @@ const TrendingApps = async () => {
           </div>
         ) : ( */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 container mx-auto">
-          {apps.slice(0, 9).map((app, ind) => {
+          {apps.slice(0, from === "homepage" ? 9 : apps.length-1).map((app, ind) => {
             return <AppCard key={ind} app={app} />;
           })}
         </div>

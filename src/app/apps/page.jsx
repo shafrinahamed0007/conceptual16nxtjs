@@ -10,7 +10,7 @@ const page = () => {
   return (
     <div>
       
-      <TrendingApps />
+      <TrendingApps from="apps"/>
     </div>
   );
 };
