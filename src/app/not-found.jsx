@@ -1,6 +1,11 @@
 import Link from "next/link";
 import React from "react";
 
+export const metadata = {
+  title: "PH Play Store | Not Found this page",
+  description: "This is an application management website",
+};
+
 const NotFound = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-100">
