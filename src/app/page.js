@@ -1,9 +1,14 @@
-import Image from "next/image";
+import Banner from "@/components/homepage/Banner";
+import Stats from "@/components/homepage/Stats";
+import TrendingApps from "@/components/homepage/TrendingApps";
+
 
 export default function Home() {
   return (
     <div>
-      <h2 className="text-4xl bg-red-500">Hello! froom NEXT JS</h2>
+      <Banner />
+      <Stats />
+      <TrendingApps />
     </div>
   );
 }
