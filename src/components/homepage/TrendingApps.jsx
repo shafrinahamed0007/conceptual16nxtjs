@@ -1,21 +1,22 @@
-"use client";
 import React from "react";
 
 import useApps from "@/hooks/useApps";
 
 import Link from "next/link";
 import AppCard from "../ui/AppCard";
-import { ClockLoader } from "react-spinners";
+// import { ClockLoader } from "react-spinners";
 
 // import { useLoaderData } from "react-router";
 
 // const appsPromise = fetch("/data.json").then((res) => res.json());
 
 const appsPromise = async function () {
-  const data = await fetch("/data.json").then((res) => res.json());
+  const res = await fetch("http://localhost:3000/data.json");
+  const data = await res.json();
+  return data;
 };
 
-const TrendingApps = () => {
+const TrendingApps = async () => {
   //   const apps = use(appsPromise);
   //   console.log("Apps", apps);
   //   const data = useLoaderData();
@@ -41,25 +42,25 @@ const TrendingApps = () => {
   //   console.log("Loading", loading);
 
   /**Custom hooks use */
-  const { apps, loading } = useApps();
+  // const { apps, loading } = useApps();
+  const apps = await appsPromise();
 
   return (
     <div>
       <div>
         {/* Section header */}
         Total Apps: {apps.length}
-        {loading ? (
+        {/* {loading ? (
           <div className="flex justify-center items-center">
             {" "}
             <ClockLoader color="#c92222" />
           </div>
-        ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 container mx-auto">
-            {apps.slice(0, 9).map((app) => {
-              return <AppCard key={app.id} app={app} />;
-            })}
-          </div>
-        )}
+        ) : ( */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 container mx-auto">
+          {apps.slice(0, 9).map((app, ind) => {
+            return <AppCard key={ind} app={app} />;
+          })}
+        </div>
         <div className="text-center mt-4">
           <Link href={"/apps"}>
             <button className="btn">View All</button>

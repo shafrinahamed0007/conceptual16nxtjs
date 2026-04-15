@@ -1,3 +1,4 @@
+import TrendingApps from '@/components/homepage/TrendingApps';
 import React from 'react';
 
 export const metadata = {
@@ -8,7 +9,8 @@ export const metadata = {
 const page = () => {
   return (
     <div>
-      <h2>Apps Page</h2>
+      
+      <TrendingApps />
     </div>
   );
 };
